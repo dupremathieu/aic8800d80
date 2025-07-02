@@ -1,0 +1,13 @@
+Source: aic8800-dkms
+Section: kernel
+Priority: optional
+Maintainer: shenmintao <shenmintao@gmail.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.5.0
+Homepage: https://github.com/shenmintao/aic8800d80
+
+Package: aic8800-dkms
+Architecture: all
+Depends: dkms
+Description: AIC8800D80 Linux Driver
+ This package contains the AIC8800D80 Linux Driver for DKMS.

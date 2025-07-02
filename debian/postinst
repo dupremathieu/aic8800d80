@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "configure" ]; then
+    # Copy udev rules
+    cp aic.rules /lib/udev/rules.d/
+fi
+
+#DEBHELPER#
+
+exit 0

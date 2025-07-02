@@ -1,0 +1,19 @@
+FROM fedora:latest
+
+# Install build dependencies
+RUN dnf install -y \
+    rpm-build \
+    dkms \
+    make \
+    gcc \
+    git \
+    kernel-devel
+
+# Set the working directory
+WORKDIR /build
+
+# The entrypoint will be the build script
+COPY . /build
+
+CMD ["/bin/bash"]
+

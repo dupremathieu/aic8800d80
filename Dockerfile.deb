@@ -1,0 +1,18 @@
+FROM ubuntu:latest
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    dkms \
+    debhelper \
+    fakeroot \
+    git \
+    linux-headers-generic
+
+# Set the working directory
+WORKDIR /build
+
+# The entrypoint will be the build script
+COPY . /build
+
+CMD ["/bin/bash"]

@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+if [ "$1" = "remove" ]; then
+    # Remove udev rules
+    rm -f /lib/udev/rules.d/aic.rules
+fi
+
+#DEBHELPER#
+
+exit 0

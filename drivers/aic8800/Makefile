@@ -78,3 +78,5 @@ clean:
 	cd aic_load_fw/;make clean;cd ..
 	cd aic8800_fdrv/;make clean;cd ..
 	rm -rf modules.order Module.symvers .modules.order.cmd .Module.symvers.cmd .tmp_versions/
+
+-include debian/dkms.mk

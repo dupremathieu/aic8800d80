@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: aic8800d80
+Source: https://github.com/shenmintao/aic8800d80
+
+Files: *
+Copyright: shenmintao <shenmintao@gmail.com>
+License: GPL-2.0
