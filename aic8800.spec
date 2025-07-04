@@ -15,6 +15,8 @@ BuildRequires:  dkms
 %description
 This package contains the AIC8800D80 Linux Driver for DKMS.
 
+%global debug_package %{nil}
+
 %prep
 %setup -q -n %{dkms_name}-%{dkms_version}
 

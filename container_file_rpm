@@ -1,0 +1,34 @@
+FROM fedora:42 as compressor
+
+COPY fw /root/aic8800-1.0.0/fw
+COPY drivers /root/aic8800-1.0.0/drivers
+COPY Makefile /root/aic8800-1.0.0/Makefile
+COPY debian/ /root/aic8800-1.0.0/debian
+COPY aic.rules  /root/aic8800-1.0.0/aic.rules
+COPY dkms.conf  /root/aic8800-1.0.0/dkms.conf
+
+WORKDIR /root
+
+RUN tar cvf /root/aic8800-1.0.0.tar.gz aic8800-1.0.0
+
+FROM fedora:42
+
+# Install build dependencies
+RUN dnf install -y \
+    rpm-build \
+    dkms \
+    make \
+    gcc \
+    git \
+    kernel-devel
+
+RUN mkdir -p /root/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+
+# Set the working directory
+WORKDIR /root/rpmbuild
+
+COPY aic8800.spec /root/rpmbuild/SPECS/
+COPY --from=compressor /root/aic8800-1.0.0.tar.gz /root/rpmbuild/SOURCES
+
+
+CMD ["/usr/bin/rpmbuild", "-ba", "/root/rpmbuild/SPECS/aic8800.spec"]
